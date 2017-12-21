@@ -1,0 +1,77 @@
+import java.util.ArrayList;
+public class Facture {
+	
+private ArrayList<Article> articles = new ArrayList<Article>();
+private ArrayList<Lot> lots = new ArrayList<Lot>();
+private String NomClient;
+private int PrixTotalCommande;
+private String Date;
+private static int count;
+private int IdFacture = 0;
+
+public Facture()
+{
+System.out.println("Facture");
+	}
+public Facture(ArrayList<Article> articles, ArrayList<Lot> lots, String NomClient, String Date )
+{
+	this.IdFacture = ++count;
+	this.articles = articles;
+	this.lots = lots;
+	this.NomClient = NomClient;
+	this.Date = Date;
+	this.PrixTotalCommande = this.PrixTotalCommande();
+	
+	}
+
+
+private int PrixTotalCommande()
+{
+	int i ;
+	i = 0;
+	int Total = 0;
+	
+	while(i < this.articles.size())
+	{
+		Total = Total + this.articles.get(i).getPrix()*Article.count;
+		i++;
+	}
+	return Total;
+
+
+ }
+ public void AfficherArticles()
+ {
+	
+	System.out.println("Numéro facture : "+this.IdFacture);
+	System.out.println("Date : "+this.Date);
+	System.out.println("Nom Client : "+this.NomClient);
+	System.out.println("Prix total de la commande : "+this.PrixTotalCommande + " €";
+	int i ;
+	i = 0;
+	while(i < this.articles.size())
+	{
+		System.out.println("Référence article : "+this.articles.get(i).getRef());
+		System.out.println("Prix article : "+this.articles.get(i).getPrix()+ " €");
+		System.out.println("Nombre d'article : "+Article.count);
+		System.out.println("Prix total de l'article : "+this.articles.get(i).getPrix()*Article.count + " €");
+		
+		while(i < this.lots.size())
+		{
+		System.out.println("Référence article : "+this.lots.get(i).getRef());
+		System.out.println("Prix article : "+this.lots.get(i).getPrix() + " €");
+		System.out.println("Nombre d'article : "+Lot.count);
+		System.out.println("Prix total de l'article : "+this.lots.get(i).getPrix()*Lot.count + " €");
+		i++;
+		
+		}
+		i++;
+	}
+ }
+		
+}
+
+ 
+ 
+
+
